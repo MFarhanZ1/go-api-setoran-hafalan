@@ -4,6 +4,7 @@ import (
 	"log"
 	"os"
 	"github.com/gofiber/fiber/v3"
+	"github.com/gofiber/fiber/v3/middleware/cors"
 	"github.com/joho/godotenv"
 	"github.com/mfarhanz1/go-api-setoran-hafalan/app/routes"
 )
@@ -19,6 +20,7 @@ func main() {
 	app := fiber.New()
 
 	// Construct all routes
+	app.Use(cors.New())
 	routes.GlobalRoute(app)
 
 	// Start the server on port specified in the environment variable APP_PORT
